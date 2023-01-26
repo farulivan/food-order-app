@@ -1,9 +1,14 @@
+import { MouseEventHandler } from 'react';
 import CartIcon from '../Cart/CartIcon';
 import classes from './HeaderCartButton.module.css';
 
-const HeaderCartButton = () => {
+interface HeaderCartButton {
+  onClick: MouseEventHandler;
+}
+
+const HeaderCartButton = ({ onClick }: HeaderCartButton) => {
   return (
-    <button className={classes.button}>
+    <button className={classes.button} onClick={onClick}>
       <span className={classes.icon}>
         <CartIcon />
       </span>
