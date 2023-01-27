@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import classes from './Input.module.css';
 
 interface InputType {
@@ -14,13 +15,15 @@ interface InputProps {
   input: InputType;
 }
 
-const Input = ({ input, label }: InputProps) => {
+type Ref = HTMLInputElement;
+
+const Input = forwardRef<Ref, InputProps>(({ input, label }, ref) => {
   return (
     <div className={classes.input}>
       <label htmlFor={input.id}>{label}</label>
-      <input {...input} />
+      <input ref={ref} {...input} />
     </div>
   );
-};
+});
 
 export default Input;
